@@ -12,6 +12,7 @@ import ItemFormMyCollection from "./ItemFormMyCollection";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useMyCollectionContext } from "../hooks/useMyCollectionContext";
 import { Stack } from "@mui/system";
+import { URL } from "./App";
 
 const columns = [
   { field: "number", headerName: "Number", width: 90, editable: true },
@@ -67,7 +68,7 @@ export default function MyCollection({ setSelectedLink, link }) {
   // ====================================== READ DATA ======================================
   useEffect(() => {
     const fetchComicBooks = async () => {
-      const response = await fetch("/api/v1/mycollection/");
+      const response = await fetch(`${URL}/api/v1/mycollection/`);
       const json = await response.json(); //this is an array of objects, but if we don't parse in this fetch it is gonna come as json format.
 
       if (response.ok) {
@@ -81,7 +82,7 @@ export default function MyCollection({ setSelectedLink, link }) {
 
   const handleDelete = async () => {
     selectedRows.map(async (row) => {
-      const response = await fetch(`/api/v1/mycollection/${row._id}`, {
+      const response = await fetch(`${URL}/api/v1/mycollection/${row._id}`, {
         method: "DELETE",
       });
       const json = await response.json();
@@ -100,7 +101,7 @@ export default function MyCollection({ setSelectedLink, link }) {
 
     body[values[1]] = values[2];
 
-    const response = await fetch(`/api/v1/mycollection/${updatedData.id}`, {
+    const response = await fetch(`${URL}/api/v1/mycollection/${updatedData.id}`, {
       method: "PATCH",
       body: JSON.stringify(body),
       headers: {
@@ -113,7 +114,7 @@ export default function MyCollection({ setSelectedLink, link }) {
 
     if (response.ok) {
       const fetchComicBooks = async () => {
-        const responseReadBack = await fetch("/api/v1/mycollection/");
+        const responseReadBack = await fetch(`${URL}/api/v1/mycollection/`);
         const json = await responseReadBack.json(); //this is an array of objects, but if we don't parse in this fetch it is gonna come as json format.
 
         if (responseReadBack.ok) {
@@ -147,7 +148,7 @@ export default function MyCollection({ setSelectedLink, link }) {
 
   const handleDuplicateSelectedRows = async () => {
     duplicateSelectedRows.map(async (row) => {
-      const response = await fetch("/api/v1/mycollection/", {
+      const response = await fetch(`${URL}/api/v1/mycollection/`, {
         method: "POST",
         body: JSON.stringify(row),
         headers: {

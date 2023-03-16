@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
+export const URL = process.env.REACT_APP_SERVER_URL;
 
 function App() {
   return (

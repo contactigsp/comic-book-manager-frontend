@@ -12,6 +12,7 @@ import ItemFormWishlist from "./ItemFormWishlist";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useWishlistContext } from "../hooks/useWishlistContext";
 import { Stack } from "@mui/system";
+import { URL } from "./App";
 
 const columns = [
   { field: "number", headerName: "Number", width: 90, editable: true },
@@ -67,7 +68,7 @@ export default function Wishlist({ setSelectedLink, link }) {
   // ====================================== READ DATA ======================================
   useEffect(() => {
     const fetchComicBooks = async () => {
-      const response = await fetch("/api/v1/wishlist/");
+      const response = await fetch(`${URL}/api/v1/wishlist/`);
       const json = await response.json(); //this is an array of objects, but if we don't parse in this fetch it is gonna come as json format.
 
       if (response.ok) {
@@ -81,7 +82,7 @@ export default function Wishlist({ setSelectedLink, link }) {
 
   const handleDelete = async () => {
     selectedRows.map(async (row) => {
-      const response = await fetch(`/api/v1/wishlist/${row._id}`, {
+      const response = await fetch(`${URL}/api/v1/wishlist/${row._id}`, {
         method: "DELETE",
       });
       const json = await response.json();
@@ -100,7 +101,7 @@ export default function Wishlist({ setSelectedLink, link }) {
 
     body[values[1]] = values[2];
 
-    const response = await fetch(`/api/v1/wishlist/${updatedData.id}`, {
+    const response = await fetch(`${URL}/api/v1/wishlist/${updatedData.id}`, {
       method: "PATCH",
       body: JSON.stringify(body),
       headers: {
@@ -112,7 +113,7 @@ export default function Wishlist({ setSelectedLink, link }) {
     }
     if (response.ok) {
       const fetchComicBooks = async () => {
-        const responseReadBack = await fetch("/api/v1/wishlist/");
+        const responseReadBack = await fetch(`${URL}/api/v1/wishlist/`);
         const json = await responseReadBack.json(); //this is an array of objects, but if we don't parse in this fetch it is gonna come as json format.
 
         if (responseReadBack.ok) {
@@ -146,7 +147,7 @@ export default function Wishlist({ setSelectedLink, link }) {
 
   const handleDuplicateSelectedRows = async () => {
     duplicateSelectedRows.map(async (row) => {
-      const response = await fetch("/api/v1/wishlist/", {
+      const response = await fetch(`${URL}/api/v1/wishlist/`, {
         method: "POST",
         body: JSON.stringify(row),
         headers: {

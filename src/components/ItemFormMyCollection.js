@@ -8,6 +8,7 @@ import { blueGrey, grey } from "@mui/material/colors";
 import { useMyCollectionContext } from "../hooks/useMyCollectionContext";
 import { Container } from "@mui/system";
 import useLocalStorageState from "../hooks/useLocalStorageState";
+import { URL } from "./App";
 
 export default function ItemForm() {
   const { dispatch } = useMyCollectionContext();
@@ -16,12 +17,13 @@ export default function ItemForm() {
 
   // console.log(comicBook);
 
+
   // =============== CREATE DATA ON FORM SUBMIT ===============
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     // addItem(comicBook);
-    const response = await fetch("/api/v1/mycollection/", {
+    const response = await fetch(`${URL}/api/v1/mycollection/`, {
       method: "POST",
       body: JSON.stringify(comicBook),
       headers: {

@@ -8,6 +8,7 @@ import { blueGrey, grey } from "@mui/material/colors";
 import { useWishlistContext } from "../hooks/useWishlistContext";
 import { Container } from "@mui/system";
 import useLocalStorageState from "../hooks/useLocalStorageState";
+import { URL } from "./App";
 
 export default function ItemForm() {
   const { dispatch } = useWishlistContext();
@@ -18,7 +19,7 @@ export default function ItemForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("/api/v1/wishlist/", {
+    const response = await fetch(`${URL}/api/v1/wishlist/`, {
       method: "POST",
       body: JSON.stringify(comicBook),
       headers: {
