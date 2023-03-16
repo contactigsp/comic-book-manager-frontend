@@ -68,7 +68,7 @@ export default function MyCollection({ setSelectedLink, link }) {
   // ====================================== READ DATA ======================================
   useEffect(() => {
     const fetchComicBooks = async () => {
-      const response = await fetch(`${URL}/api/v1/mycollection/`);
+      const response = await fetch(`${URL}/api/v1/mycollection`);
       const json = await response.json(); //this is an array of objects, but if we don't parse in this fetch it is gonna come as json format.
 
       if (response.ok) {
@@ -114,7 +114,7 @@ export default function MyCollection({ setSelectedLink, link }) {
 
     if (response.ok) {
       const fetchComicBooks = async () => {
-        const responseReadBack = await fetch(`${URL}/api/v1/mycollection/`);
+        const responseReadBack = await fetch(`${URL}/api/v1/mycollection`);
         const json = await responseReadBack.json(); //this is an array of objects, but if we don't parse in this fetch it is gonna come as json format.
 
         if (responseReadBack.ok) {
@@ -148,7 +148,7 @@ export default function MyCollection({ setSelectedLink, link }) {
 
   const handleDuplicateSelectedRows = async () => {
     duplicateSelectedRows.map(async (row) => {
-      const response = await fetch(`${URL}/api/v1/mycollection/`, {
+      const response = await fetch(`${URL}/api/v1/mycollection`, {
         method: "POST",
         body: JSON.stringify(row),
         headers: {

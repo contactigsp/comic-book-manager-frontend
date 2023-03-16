@@ -19,7 +19,7 @@ export default function ItemForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`${URL}/api/v1/wishlist/`, {
+    const response = await fetch(`${URL}/api/v1/wishlist`, {
       method: "POST",
       body: JSON.stringify(comicBook),
       headers: {
