@@ -1,15 +1,15 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
 export const URL = process.env.REACT_APP_SERVER_URL;
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="*" element={<Layout />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }

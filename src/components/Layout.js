@@ -150,19 +150,19 @@ export default function Layout() {
       {
         title: "Characters",
         icon: <Book />,
-        link: "/api/v1/characters",
+        link: "/characters",
         component: (
-          <CharCard {...{ setSelectedLink, link: "/api/v1/characters" }} />
+          <CharCard {...{ setSelectedLink, link: "/characters" }} />
         ),
       },
       {
         title: "My Collection",
         icon: <LibraryBooks />,
-        link: "/api/v1/mycollection",
+        link: "/mycollection",
         component: (
           <ThemeProvider theme={blueTheme}>
             <MyCollection
-              {...{ setSelectedLink, link: "/api/v1/mycollection" }}
+              {...{ setSelectedLink, link: "/mycollection" }}
             />
           </ThemeProvider>
         ),
@@ -170,10 +170,10 @@ export default function Layout() {
       {
         title: "Wishlist",
         icon: <FavoriteBorder sx={{ color: red[500] }} />,
-        link: "/api/v1/wishlist",
+        link: "/wishlist",
         component: (
           <ThemeProvider theme={pinkTheme}>
-            <Wishlist {...{ setSelectedLink, link: "/api/v1/wishlist" }} />
+            <Wishlist {...{ setSelectedLink, link: "/wishlist" }} />
           </ThemeProvider>
         ),
       },
